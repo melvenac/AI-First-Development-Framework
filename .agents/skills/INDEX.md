@@ -21,6 +21,7 @@ Skills are reusable patterns that agents can reference when performing specific 
 
 | Skill | Directory | Description | Created |
 |---|---|---|---|
+| session-manager | `skills/session-manager/` | Universal session lifecycle — enforces /start and /end protocols, meta mode awareness | Session 2 |
 | playwright-tester | `skills/playwright-tester/` | Zero-token E2E testing — AI writes `.spec.ts` files, Playwright runs them natively | Session 1 |
 
 ---
