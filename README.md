@@ -43,7 +43,9 @@ Without this framework, every AI session starts from zero. With it, agents:
 │   └── <skill-name>/SKILL.md    ← Individual skill instructions
 └── workflows/                    ← Lifecycle commands
     ├── start.md                  ← Session start protocol
-    └── end.md                    ← Session end protocol
+    ├── end.md                    ← Session end protocol
+    ├── test.md                   ← Zero-token E2E testing protocol
+    └── task.md                   ← Next task selection protocol
 
 .claude/commands/                 ← Claude Code slash commands (mirrors workflows/)
 .gemini/commands/                 ← Gemini slash commands (mirrors workflows/)
