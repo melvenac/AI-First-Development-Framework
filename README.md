@@ -11,16 +11,22 @@ Works with **Claude Code, Cline, Gemini, Cursor**, and any AI agent that can rea
 
 Get started with a new project in under 5 minutes:
 
-### 1. Clone This Repo
+### Option A: Use as GitHub Template (Recommended)
+
+Click the **"Use this template"** button on GitHub, or:
+
+```bash
+gh repo create my-new-project --template melvenac/AI-First-Development-Framework --clone
+cd my-new-project
+```
+
+This creates a fresh repo with no commit history from the template.
+
+### Option B: Clone and Reset
 
 ```bash
 git clone https://github.com/melvenac/AI-First-Development-Framework.git my-new-project
 cd my-new-project
-```
-
-### 2. Reset Git History
-
-```bash
 rm -rf .git
 git init
 git add -A
