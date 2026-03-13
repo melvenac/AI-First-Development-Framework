@@ -140,7 +140,8 @@ Features shipping (Session 4-8)
   → Don't force it — if you haven't repeated a pattern, you don't need a skill
   ↓
 Stabilizing (Session 8+)
-  → Create: testing skill, deployment skill
+  → Create: playwright-tester skill (zero-token E2E testing)
+  → Create: deployment skill
   → Flesh out placeholder skills
   → Add validation scripts
 ```
@@ -176,7 +177,8 @@ The framework is **90% tech-agnostic**. Here's what changes per stack:
 ### Example: Same Framework, Different Stack
 
 **This project** (Next.js + Convex + Clerk + Stripe):
-- Skills: `convex-schema-guard`, `stripe-lazy-init`, `shadcn-ui`, `fullcalendar-convex`
+- Skills: `convex-schema-guard`, `stripe-lazy-init`, `shadcn-ui`, `fullcalendar-convex`, `playwright-tester`
+- Testing: Zero-token Playwright E2E (53 tests across 7 spec files, `npx playwright test tests/e2e/`)
 - Validation: `validate-entities.ts` (parses Convex schema.ts files)
 - Rules: Server Components default, Convex validators, Tailwind dark theme
 
@@ -207,6 +209,13 @@ Every development session follows this pattern:
 
 ... development work ...
 
+/test (optional — after feature work or before deploy)
+  ├── Assess project structure
+  ├── Author .spec.ts files (zero-token — deterministic scripts)
+  ├── Execute via Playwright CLI (zero AI tokens)
+  ├── Fix loop (max 3 attempts per failure)
+  └── Report → feeds into /end session summary
+
 /end
   ├── Update session log (accomplishments, files, gotchas)
   ├── Update SUMMARY.md (current state block)
@@ -219,6 +228,87 @@ Every development session follows this pattern:
 ```
 
 This lifecycle is what gives agents **continuity across sessions**. Without it, every session is a cold start.
+
+---
+
+## Zero-Token E2E Testing
+
+The framework includes a **zero-token testing strategy** that uses AI only to *write* deterministic test scripts, then runs them natively with Playwright at zero token cost.
+
+### Why Zero-Token?
+
+Traditional AI-driven testing (screenshot analysis, Playwright MCP server) consumes massive tokens per run. This approach splits testing into two phases:
+
+1. **Write phase** (AI tokens) — The agent reads your project structure, understands routes/components/auth gates, and generates `.spec.ts` test files organized by strategy
+2. **Run phase** (zero tokens) — Playwright executes those scripts natively via CLI. No AI judgment needed at runtime
+
+### The 5-Phase Workflow
+
+```
+/test (or invoke playwright-tester skill)
+  ├── Phase 1: Assess    — Read project structure (framework, routing, entry points)
+  ├── Phase 2: Author    — Write independent .spec.ts files by strategy
+  ├── Phase 3: Execute   — Run tests natively via Playwright CLI
+  ├── Phase 4: Fix Loop  — Auto-repair failures (max 3 attempts)
+  └── Phase 5: Report    — Results table, bugs found/fixed, suggested coverage
+```
+
+### Test Strategy Categories
+
+| File | Strategy | What it covers |
+|---|---|---|
+| `happy_path.spec` | Core user journeys | The flows that must always work |
+| `validation.spec` | Form validation | Required fields, error states, success states |
+| `navigation.spec` | Routing & links | All routes resolve, nav links work, 404 handling |
+| `auth_gates.spec` | Auth boundaries | Protected routes redirect, public routes stay open |
+| `responsive.spec` | Viewport rendering | Mobile, tablet, desktop breakpoints |
+| `[feature].spec` | Feature-specific | Booking flow, membership flow, etc. |
+
+### Integration with the Framework
+
+| Framework Layer | Testing Integration |
+|---|---|
+| `skills/playwright-tester/SKILL.md` | The skill file — 5-phase playbook with project-specific details |
+| `SYSTEM/TESTING.md` | Documents the zero-token strategy as an official testing layer |
+| `SYSTEM/RULES.md` | Add rule: "Tests are `.spec.ts` files, run natively, zero AI tokens at execution" |
+| `skills/INDEX.md` | Register the `playwright-tester` skill |
+| `playwright.config.ts` | Project root — Playwright configuration |
+| `tests/e2e/` | Test files live here, organized by strategy |
+
+### The Fix Loop
+
+The fix loop is what makes this self-repairing:
+
+1. Run tests → some fail
+2. Agent reads error output and failure screenshots
+3. Determines if failure is a **test bug** (bad selector, timing) or an **app bug** (broken UI, backend error)
+4. Fixes the issue, re-runs
+5. **Max 3 attempts** per failing test — prevents infinite loops
+6. Final report lists all bugs found/fixed and suggests additional coverage
+
+### When to Create the Testing Skill
+
+Following the framework's skill creation philosophy ("create when you've repeated a pattern 3+ times"), the testing skill fits naturally in the **Stabilizing** phase:
+
+```
+Stabilizing (Session 8+)
+  → Create: playwright-tester skill
+  → Install: @playwright/test + playwright.config.ts
+  → Author initial test suite (happy path + navigation)
+  → Expand coverage as features stabilize
+```
+
+### Duplicating for Other Projects
+
+The testing skill is **90% portable**. When duplicating for a new project:
+
+1. Copy `skills/playwright-tester/SKILL.md` as a starting template
+2. Update Phase 1 (Assess) with the new project's framework/routing conventions
+3. Update Phase 2 (Author) test categories to match the new project's features
+4. The Fix Loop and Report phases are universal — copy as-is
+5. Create a new `playwright.config.ts` pointing to the project's dev server
+
+The test *files* themselves are project-specific and get regenerated by the skill each time.
 
 ---
 
@@ -252,6 +342,8 @@ This lifecycle is what gives agents **continuity across sessions**. Without it, 
 - [ ] Create first tech-specific skill after Session 2-3
 - [ ] Add validation scripts after Session 5+
 - [ ] Create TESTING.md after first feature ships
+- [ ] Create playwright-tester skill after Session 8+ (stabilizing phase)
+- [ ] Run initial zero-token test suite and iterate through fix loop
 - [ ] Create RUNBOOK.md before production deploy
 - [ ] Create SECURITY.md before production deploy
 ```
