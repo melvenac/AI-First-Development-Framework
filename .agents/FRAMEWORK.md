@@ -194,6 +194,26 @@ The framework is **90% tech-agnostic**. Here's what changes per stack:
 - Validation: Script that parses .proto files and checks ENTITIES.md
 - Rules: Go naming conventions, error wrapping, context propagation
 
+**A SvelteKit + Supabase + Tailwind project** would have:
+- Skills: `supabase-rls`, `svelte-stores`, `playwright-tester`
+- Validation: Script that parses Supabase migrations and checks ENTITIES.md
+- Rules: Server-side load functions, Supabase RLS policies, Tailwind utility classes
+
+**An Astro + SQLite + HTMX project** would have:
+- Skills: `astro-islands`, `drizzle-orm`, `htmx-patterns`
+- Validation: Script that parses Drizzle schema and checks ENTITIES.md
+- Rules: Static-first pages, island architecture for interactivity, minimal JS
+
+**A Rails + PostgreSQL + Hotwire project** would have:
+- Skills: `rails-models`, `turbo-frames`, `stimulus-controllers`
+- Validation: Script that parses `db/schema.rb` and checks ENTITIES.md
+- Rules: Convention over configuration, fat models thin controllers, Turbo for SPA-like UX
+
+**A FastAPI + SQLAlchemy + React project** would have:
+- Skills: `sqlalchemy-models`, `pydantic-schemas`, `react-query`
+- Validation: Script that parses SQLAlchemy models and checks ENTITIES.md
+- Rules: Pydantic for all request/response schemas, async endpoints, dependency injection
+
 ---
 
 ## The Session Lifecycle
