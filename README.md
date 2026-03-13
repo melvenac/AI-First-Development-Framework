@@ -5,6 +5,60 @@
 
 ---
 
+## New Project Setup
+
+Get started with a new project in under 5 minutes:
+
+### 1. Clone This Repo
+
+```bash
+git clone https://github.com/melvenac/AI-First-Development-Framework.git my-new-project
+cd my-new-project
+```
+
+### 2. Reset Git History
+
+Remove the framework repo's history and start fresh:
+
+```bash
+rm -rf .git
+git init
+git add -A
+git commit -m "Initial commit: AI-First Development Framework scaffold"
+```
+
+### 3. Write Your PRD
+
+This is the most important step. Open `.agents/SYSTEM/PRD.md` and define your project — what you're building, the tech stack, features, data model, etc. See [Phase 2: Write the PRD](#phase-2-write-the-prd-30-60-minutes) for the full template.
+
+**Tip:** You can ask your AI agent to help draft the PRD. Give it your idea and ask it to produce a structured PRD following the template format.
+
+### 4. Start Your First Session
+
+```
+/start
+```
+
+The AI reads the framework, understands the structure, and helps you fill in the remaining SYSTEM docs (ENTITIES.md, RULES.md, SUMMARY.md) from your PRD. From here, you're building.
+
+### What You Get Out of the Box
+
+| File | Purpose | Action Needed |
+|---|---|---|
+| `.agents/FRAMEWORK.md` | Framework guide | Read-only reference |
+| `.agents/SYSTEM/PRD.md` | Product requirements | **Write this first** |
+| `.agents/SYSTEM/SUMMARY.md` | Current project state | AI updates each session |
+| `.agents/SYSTEM/ENTITIES.md` | Data model docs | Derive from PRD |
+| `.agents/SYSTEM/RULES.md` | Coding standards | Customize for your stack |
+| `.agents/SYSTEM/DECISIONS.md` | Decision log | Fills up as you build |
+| `.agents/TASKS/INBOX.md` | Task backlog | Create from PRD features |
+| `.agents/workflows/` | Session lifecycle | Works as-is |
+| `.claude/commands/` | Claude Code slash commands | Works as-is |
+| `.gemini/commands/` | Gemini slash commands | Works as-is |
+| `CLAUDE.md` | Claude Code entry point | Works as-is |
+
+---
+
 ## What Is This?
 
 This is an **AI-first development framework** — a structured set of markdown documents, workflows, and validation scripts that give AI coding agents (Cline, Claude Code, Gemini, Cursor, etc.) persistent memory, consistent behavior, and guardrails across sessions.
