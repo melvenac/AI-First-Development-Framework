@@ -5,6 +5,9 @@
 # Session logs (generated per-project, not part of the template)
 .agents/SESSIONS/Session_*.md
 
+# META directory (framework development tracking — not part of the skeleton)
+.agents/META/
+
 # Playwright (generated when running /test)
 tests/e2e/
 test-results/

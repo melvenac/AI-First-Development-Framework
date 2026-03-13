@@ -4,18 +4,30 @@
 
 ---
 
+## Meta Mode Detection
+
+If `.agents/META/` exists, this is the **framework template repo itself**. In meta mode:
+- Read from `.agents/META/SUMMARY.md`, `META/INBOX.md`, and `META/DECISIONS.md` instead of the SYSTEM/ templates
+- Session logs still go to `.agents/SESSIONS/Session_N.md` (gitignored)
+- **Do NOT overwrite SYSTEM/ template files** — those are the skeleton that ships to users
+- Only modify SYSTEM/ files when intentionally improving the template content
+
+---
+
 ## Steps
 
 ### 1. Read Current State
 ```
-Read: .agents/SYSTEM/SUMMARY.md
+If META/ exists:  Read: .agents/META/SUMMARY.md
+Otherwise:        Read: .agents/SYSTEM/SUMMARY.md
 ```
 Understand where the project is RIGHT NOW — what's working, what's broken, what's next.
 
 ### 2. Read Task Backlog
 ```
-Read: .agents/TASKS/INBOX.md
-Read: .agents/TASKS/task.md
+If META/ exists:  Read: .agents/META/INBOX.md
+Otherwise:        Read: .agents/TASKS/INBOX.md
+                  Read: .agents/TASKS/task.md
 ```
 Understand priorities and current sprint focus.
 

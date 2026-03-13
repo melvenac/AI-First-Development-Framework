@@ -4,6 +4,15 @@
 
 ---
 
+## Meta Mode Detection
+
+If `.agents/META/` exists, this is the **framework template repo itself**. In meta mode:
+- Write session tracking updates to `META/` files, NOT the `SYSTEM/` templates
+- Only modify `SYSTEM/` files when intentionally improving template content
+- This prevents framework development sessions from polluting the clean skeleton
+
+---
+
 ## Steps
 
 ### 1. Update Session Log
@@ -19,7 +28,8 @@ Fill in:
 
 ### 2. Update SUMMARY.md
 ```
-Update: .agents/SYSTEM/SUMMARY.md
+If META/ exists:  Update: .agents/META/SUMMARY.md
+Otherwise:        Update: .agents/SYSTEM/SUMMARY.md
 ```
 Overwrite the "Current State" section with:
 - What's working NOW
@@ -28,15 +38,17 @@ Overwrite the "Current State" section with:
 
 ### 3. Update DECISIONS.md (if applicable)
 ```
-Update: .agents/SYSTEM/DECISIONS.md
+If META/ exists:  Update: .agents/META/DECISIONS.md
+Otherwise:        Update: .agents/SYSTEM/DECISIONS.md
 ```
-Add any new ADR entries for significant decisions made this session.
+Add any new entries for significant decisions made this session.
 
 ### 4. Update ENTITIES.md (if schema changed)
 ```
 Update: .agents/SYSTEM/ENTITIES.md
 ```
 If the data model was modified, update the entity documentation to match.
+_(Not applicable in meta mode — framework has no data model.)_
 
 ### 5. Run Entity Validation (if schema changed)
 ```
@@ -45,7 +57,8 @@ Run: validate:entities (if it exists and schema was modified)
 
 ### 6. Update INBOX.md
 ```
-Update: .agents/TASKS/INBOX.md
+If META/ exists:  Update: .agents/META/INBOX.md
+Otherwise:        Update: .agents/TASKS/INBOX.md
 ```
 - Mark completed tasks as `[x]`
 - Add any new tasks discovered during the session
