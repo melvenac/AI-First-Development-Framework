@@ -21,7 +21,7 @@ Skills are reusable patterns that agents can reference when performing specific 
 
 | Skill | Directory | Description | Created |
 |---|---|---|---|
-| _None yet_ | | _Skills emerge from patterns during development_ | |
+| playwright-tester | `skills/playwright-tester/` | Zero-token E2E testing — AI writes `.spec.ts` files, Playwright runs them natively | Session 1 |
 
 ---
 
