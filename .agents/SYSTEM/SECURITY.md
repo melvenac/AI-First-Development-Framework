@@ -224,7 +224,7 @@ requirements (FERPA, CCPA, etc.).
 EXAMPLE:
 | Date | Auditor | Findings | Remediation |
 |---|---|---|---|
-| 2026-03-01 | @melvenac | Stripe webhook secret not rotated since project start | Rotated key, updated env var, verified webhook delivery |
+| 2026-03-01 | @yourname | Stripe webhook secret not rotated since project start | Rotated key, updated env var, verified webhook delivery |
 | 2026-03-10 | AI agent (Session 12) | npm audit found 2 moderate vulnerabilities in `semver` | Updated to semver@7.6.0, verified no breaking changes |
 
 Log every security review, even informal ones. This creates a paper trail

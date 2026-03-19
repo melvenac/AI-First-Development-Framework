@@ -1,4 +1,4 @@
-# AI-First Development Framework
+# Framework Guide
 **Version 1.0 — Portable Agent Architecture**
 
 > This document explains the framework, how to use it, and how to duplicate it for any project with any tech stack.
