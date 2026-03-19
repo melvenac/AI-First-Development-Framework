@@ -1,25 +1,51 @@
-# {{PROJECT_NAME}}
-**{{PROJECT_DESCRIPTION}}**
+# AI-First Development Framework
+**A portable project scaffold that gives AI coding agents persistent memory, consistent behavior, and guardrails across sessions.**
+
+Works with **Claude Code, Cline, Gemini, Cursor**, and any AI agent that can read files.
 
 ---
 
-## Getting Started
+## New Project Setup
 
-This project uses the [AI-First Development Framework](https://github.com/melvenac/AI-First-Development-Framework) for AI-assisted development.
+Get started with a new project in under 5 minutes:
 
-### 1. Write Your PRD
+### Option A: Use as GitHub Template (Recommended)
 
-Open `.agents/SYSTEM/PRD.md` and define your project — what you're building, the tech stack, features, data model, etc. Every section has inline examples to guide you.
+Click the **"Use this template"** button on GitHub, or:
 
-**Tip:** Ask your AI agent to help draft the PRD. Give it your idea and the template format.
-
-### 2. Start Your First Session
-
-```
-/start
+```bash
+gh repo create my-new-project --template melvenac/AI-First-Development-Framework --clone
+cd my-new-project
 ```
 
-The AI reads the framework, understands the structure, and helps you fill in the remaining SYSTEM docs (ENTITIES.md, RULES.md, SUMMARY.md) from your PRD. From here, you're building.
+This creates a fresh repo with no commit history from the template.
+
+### Option B: Clone and Reset
+
+```bash
+git clone https://github.com/melvenac/AI-First-Development-Framework.git my-new-project
+cd my-new-project
+rm -rf .git
+git init
+git add -A
+git commit -m "Initial commit from AI-First Development Framework"
+```
+
+### After Setup
+
+1. **Replace this README** — Update the title, description, and remove the setup instructions above. A project README template is below the divider.
+2. **Write your PRD** — Open `.agents/SYSTEM/PRD.md` and define your project
+3. **Start your first session** — Run `/start` and the AI will help fill in the rest
+
+---
+---
+
+<!-- ====== PROJECT README TEMPLATE (keep everything below) ====== -->
+
+# {{PROJECT_NAME}}
+**{{PROJECT_DESCRIPTION}}**
+
+Built with the [AI-First Development Framework](https://github.com/melvenac/AI-First-Development-Framework).
 
 ---
 
