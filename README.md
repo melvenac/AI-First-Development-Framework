@@ -1,3 +1,15 @@
+# ARCHIVED — Moved to Self-Improving-Agent
+
+This repo has been archived. The AI-First Development Framework now lives as a project template inside the **Self-Improving-Agent** repo:
+
+**https://github.com/melvenac/Self-Improving-Agent**
+
+The framework template is at `project-template/` in that repo.
+
+---
+
+*Original description below for reference:*
+
 # AI-First Development Framework
 **A portable project scaffold that gives AI coding agents persistent memory, consistent behavior, and guardrails across sessions.**
 
